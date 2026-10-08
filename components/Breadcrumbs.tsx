@@ -19,7 +19,10 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
 
   return (
     <>
-      <nav aria-label="Breadcrumb" className="mx-auto max-w-[1244px] px-5 pt-6 text-xs text-[#647386] lg:px-8">
+      <nav
+        aria-label="Breadcrumb"
+        className="mx-auto max-w-[1244px] px-5 pt-6 text-xs text-[#647386] lg:px-8"
+      >
         <ol className="flex flex-wrap items-center gap-1">
           {trail.map((crumb, i) => (
             <li key={crumb.href} className="flex items-center gap-1">

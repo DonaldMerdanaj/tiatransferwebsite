@@ -28,17 +28,34 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const relatedRoute = post.relatedRouteSlug ? getRouteBySlug(post.relatedRouteSlug) : undefined;
+  const relatedRoute = post.relatedRouteSlug
+    ? getRouteBySlug(post.relatedRouteSlug)
+    : undefined;
 
   return (
     <div className="min-h-screen bg-white text-[#132235]">
       <SiteHeader />
-      <Breadcrumbs items={[{ name: "Guides", href: "/blog" }, { name: post.title, href: `/blog/${post.slug}` }]} />
-      <main className="mx-auto max-w-[700px] px-5 py-16 lg:px-8">
+      <Breadcrumbs
+        items={[
+          { name: "Guides", href: "/blog" },
+          { name: post.title, href: `/blog/${post.slug}` },
+        ]}
+      />
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="mx-auto max-w-[700px] px-5 py-16 lg:px-8"
+      >
         <p className="text-xs text-[#647386]">
-          {new Date(post.publishedAt).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
+          {new Date(post.publishedAt).toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })}
         </p>
-        <h1 className="mt-2 text-4xl font-extrabold leading-tight tracking-[-.03em]">{post.title}</h1>
+        <h1 className="mt-2 text-4xl font-extrabold leading-tight tracking-[-.03em]">
+          {post.title}
+        </h1>
         <div className="mt-8 space-y-5 text-sm leading-7 text-[#647386]">
           {post.body.map((paragraph, i) => (
             <p key={i}>{paragraph}</p>
@@ -51,8 +68,12 @@ export default async function BlogPostPage({ params }: Props) {
             className="mt-12 flex items-center justify-between rounded-[10px] bg-[#f5f7f9] p-5 hover:bg-[#e1e0df]"
           >
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[.18em] text-[#ef1d25]">Book this transfer</p>
-              <p className="mt-1 font-semibold">Tirana Airport → {relatedRoute.city} — from €{relatedRoute.priceFromEUR}</p>
+              <p className="text-[11px] font-bold uppercase tracking-[.18em] text-[#ef1d25]">
+                Book this transfer
+              </p>
+              <p className="mt-1 font-semibold">
+                Tirana Airport → {relatedRoute.city} — get a quote
+              </p>
             </div>
             <span>→</span>
           </a>

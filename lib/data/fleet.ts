@@ -4,10 +4,30 @@ export type FleetVehicle = {
   note: string;
   image: string;
 };
-
+// Supplied category artwork is illustrative; actual vehicle and capacity are confirmed at booking.
 export const fleet: FleetVehicle[] = [
-  { slug: "sedan", name: "Sedan", note: "1–3 passengers · 2 bags", image: "/images/fleet-sedan.jpg" },
-  { slug: "business", name: "Business", note: "1–3 passengers · executive comfort", image: "/images/fleet-business.jpg" },
-  { slug: "van", name: "Van", note: "4–8 passengers · room for everyone", image: "/images/fleet-van.jpg" },
-  { slug: "minibus", name: "Minibus", note: "9–16 passengers · groups made easy", image: "/images/fleet-minibus.jpg" },
+  {
+    slug: "economy",
+    name: "Economy",
+    note: "Affordable private transfers for individual travellers and small groups.",
+    image: "/images/fleet-sedan.jpg",
+  },
+  {
+    slug: "comfort",
+    name: "Comfort",
+    note: "Comfortable vehicles for a relaxing journey.",
+    image: "/images/fleet-business.jpg",
+  },
+  {
+    slug: "minivan",
+    name: "Minivan",
+    note: "Spacious transportation for families and groups.",
+    image: "/images/fleet-van.jpg",
+  },
+  {
+    slug: "minibus",
+    name: "Minibus",
+    note: "Convenient transportation for larger groups.",
+    image: "/images/fleet-minibus.jpg",
+  },
 ];

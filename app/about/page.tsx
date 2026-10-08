@@ -2,32 +2,46 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-
 export const metadata: Metadata = {
-  title: "About TiaTransfer | Private Tirana Airport Transfers",
-  description: "Who we are and why TiaTransfer runs fixed-price, meet-and-greet transfers from Tirana Airport.",
+  title: "About TiaTransfer | Private Airport Transfers",
+  description:
+    "Learn about private airport transfers from Tirana International Airport to destinations across Albania.",
   alternates: { canonical: "https://tiatransfer.com/about" },
 };
-
-export default function AboutPage() {
+export default function About() {
   return (
-    <div className="min-h-screen bg-white text-[#132235]">
+    <>
       <SiteHeader />
-      <Breadcrumbs items={[{ name: "About", href: "/about" }]} />
-      <main className="mx-auto max-w-[760px] px-5 py-16 lg:px-8">
-        <h1 className="text-4xl font-extrabold tracking-[-.03em] sm:text-[38px]">About TiaTransfer</h1>
-        <div className="mt-8 space-y-5 text-sm leading-7 text-[#647386]">
-          <p>
-            TiaTransfer runs private, fixed-price transfers from Tirana Airport to destinations across Albania —
-            built around the idea that the first hour of a trip should feel easy, not uncertain.
-          </p>
-          <p>
-            {/* TODO: replace with your real company story, founding details, and licensing info */}
-            Add your company background, licensing, and team details here.
-          </p>
-        </div>
+      <Breadcrumbs items={[{ name: "About Us", href: "/about" }]} />
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="content-width route-detail"
+      >
+        <p className="eyebrow-premium">Your journey, made simpler</p>
+        <h1>Private airport transfers across Albania</h1>
+        <p>
+          TiaTransfer helps travellers arrange private transport from Tirana
+          International Airport to their destination. Choose your route, review
+          your vehicle and confirm your price before travelling.
+        </p>
+        <h2>A clear plan for your arrival</h2>
+        <p>
+          Provide your flight details when booking, follow the meeting
+          instructions in your confirmation and travel directly to your
+          accommodation. Our airport pickup guide explains where to meet your
+          driver.
+        </p>
+        <p>
+          <a className="text-link" href="/routes">
+            Explore destinations →
+          </a>
+        </p>
+        <a className="button button-red" href="/#quote">
+          Book your transfer →
+        </a>
       </main>
       <SiteFooter />
-    </div>
+    </>
   );
 }

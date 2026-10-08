@@ -1,56 +1,56 @@
-// Sample posts — replace with your AI content pipeline output
-// (same pattern as travelinalbania.org). Keep the shape; swap the content.
-
 export type BlogPost = {
   slug: string;
   title: string;
   description: string;
-  publishedAt: string; // ISO date
-  relatedRouteSlug?: string; // links a guide to its matching /routes/[slug]
-  body: string[]; // paragraphs
+  publishedAt: string;
+  relatedRouteSlug?: string;
+  image?: string;
+  body: string[];
 };
-
 export const posts: BlogPost[] = [
   {
-    slug: "tirana-airport-arrivals-guide",
-    title: "Tirana Airport Arrivals: What to Expect (2026 Guide)",
+    slug: "tirana-airport-to-ksamil-guide",
+    title: "How to Get from Tirana Airport to Ksamil",
     description:
-      "Customs, SIM cards, currency exchange, and where to find your driver — everything for the first 30 minutes after landing at TIA.",
-    publishedAt: "2026-01-15",
+      "Plan your arrival, compare transport options and prepare for a transfer to the southern coast.",
+    publishedAt: "2026-10-08",
+    relatedRouteSlug: "tirana-airport-to-ksamil",
     body: [
-      "Tirana International Airport (TIA) is small enough that arrivals rarely take long, but a few things catch first-time visitors off guard.",
-      "After you clear passport control and collect your bags, arrivals is a single hall — your driver will be waiting there with a sign showing your name.",
-      "If you need cash, ATMs are available past customs; card payment is widely accepted in Tirana itself but less so outside the capital.",
-    ],
-  },
-  {
-    slug: "things-to-do-in-sarande",
-    title: "Things to Do in Sarande: A First-Timer's List",
-    description:
-      "The Albanian Riviera's main hub — beaches, boat trips to Ksamil, and the short ferry to Corfu.",
-    publishedAt: "2026-02-03",
-    relatedRouteSlug: "tirana-airport-to-sarande",
-    body: [
-      "Sarande sits at the southern end of the Albanian Riviera, and most visitors use it as a base for the beaches around Ksamil, a short drive south.",
-      "The town itself has a long seafront promenade, and boats to Corfu, Greece run daily in season if you want a day trip across the strait.",
-      "If you're arriving straight from Tirana Airport, it's a 3h 45min drive — worth booking a fixed-price transfer rather than negotiating on arrival.",
+      "Ksamil is on Albania’s southern coast, near Sarandë and Butrint National Park. Travellers arriving at Tirana Airport should plan a substantial onward road journey rather than a short airport taxi ride.",
+      "A pre-booked private transfer takes you directly to your accommodation. Enter the full address, passenger count and luggage requirements so you can choose an appropriate vehicle and review the actual fare before confirming.",
+      "Travelling by public transport usually involves reaching an intercity departure point, continuing towards Sarandë and arranging the final connection to Ksamil. Check current timetables for your arrival day and leave time between connections.",
+      "Road travel times vary with traffic, stops and seasonal conditions. Allow additional time for a return transfer to the airport and agree the pickup time with the operator.",
     ],
   },
   {
     slug: "how-much-does-a-tirana-airport-taxi-cost",
-    title: "How Much Does a Tirana Airport Taxi Cost?",
+    title: "Tirana Airport Taxi Prices and Transportation Guide",
     description:
-      "What official airport taxis charge vs. a pre-booked fixed-price transfer, and why the difference matters after a long flight.",
-    publishedAt: "2026-02-20",
+      "Understand how airport transfer quotes work and choose transport that fits your journey.",
+    publishedAt: "2026-10-08",
     relatedRouteSlug: "tirana-airport-to-tirana",
     body: [
-      "Taxis at TIA operate on a fixed-fare board into central Tirana, but prices can vary by time of day and whether a taxi is officially licensed.",
-      "A pre-booked transfer removes the guesswork: the price is agreed before you land, your driver tracks your flight, and there's no negotiation at the curb.",
-      "For short hops into Tirana it's a marginal difference — for longer routes down the coast, a fixed price is worth booking ahead.",
+      "The cost of transport from Tirana Airport depends on your destination, vehicle size and any extras. This guide does not publish unverified fares; use the booking form to obtain a current quote for your journey.",
+      "Before accepting a taxi or confirming a private transfer, check the total price, payment method, pickup arrangements and whether your luggage and requested child seats are included.",
+      "A pre-booked transfer lets you arrange your destination and vehicle before arrival. If you choose public transport, check the current route, timetable and luggage arrangements with the operator.",
+      "For groups, compare the total journey cost rather than only a per-person headline price. Confirm your flight details and accommodation address before booking.",
+    ],
+  },
+  {
+    slug: "tirana-airport-to-sarande-guide",
+    title: "How to Get from Tirana Airport to Sarandë",
+    description:
+      "Prepare for a comfortable journey from the airport to the Albanian Riviera.",
+    publishedAt: "2026-10-08",
+    relatedRouteSlug: "tirana-airport-to-sarande",
+    body: [
+      "Sarandë is a coastal city in southern Albania. A transfer from Tirana Airport is a longer intercity journey, so it helps to decide on transport before you land.",
+      "For a direct journey, book a private transfer to the full address of your hotel or apartment. Include your flight number and choose a vehicle with enough room for everyone and their luggage.",
+      "Public transport can require a connection from the airport to an intercity departure point. Confirm the current service schedule and whether it works with your arrival time before relying on this option.",
+      "Allow flexibility for traffic and rest stops, particularly during the summer. For your return journey, agree an airport departure time that leaves enough room for check-in and security.",
     ],
   },
 ];
-
 export function getPostBySlug(slug: string) {
-  return posts.find((p) => p.slug === slug);
+  return posts.find((post) => post.slug === slug);
 }

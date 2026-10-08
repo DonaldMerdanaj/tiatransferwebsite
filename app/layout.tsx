@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@/components/Analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tiatransfer.com"),
@@ -16,21 +17,38 @@ export const metadata: Metadata = {
     title: "TiaTransfer | Tirana Airport Transfers",
     description:
       "A calm, fixed-price airport transfer from Tirana Airport to wherever your Albania trip begins.",
-    images: [{ url: "/images/tia-hero.jpg", width: 1440, height: 1800, alt: "TiaTransfer airport transfer in Albania" }],
+    images: [
+      {
+        url: "/images/tia-airport.webp",
+        width: 1440,
+        height: 1800,
+        alt: "TiaTransfer airport transfer in Albania",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "TiaTransfer | Tirana Airport Transfers",
     description:
       "Fixed-price private transfers from Tirana Airport with a local driver waiting at arrivals.",
-    images: ["/images/tia-hero.jpg"],
+    images: ["/images/tia-airport.webp"],
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const analyticsId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
   return (
     <html lang="en">
-      <body className="bg-white text-[#132235] antialiased">{children}</body>
+      <body className="bg-white text-[#132235] antialiased">
+        {children}
+        {analyticsId && /^G-[A-Z0-9]+$/.test(analyticsId) && (
+          <Analytics measurementId={analyticsId} />
+        )}
+      </body>
     </html>
   );
 }

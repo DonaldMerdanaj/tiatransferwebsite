@@ -1,64 +1,95 @@
-// One row per destination = one page at /routes/[slug].
-// Add the remaining destinations here to grow from 5 to your full 14 —
-// the page template needs no changes when you do.
-
 export type TransferRoute = {
   slug: string;
   city: string;
-  distanceKm: number;
-  durationLabel: string; // e.g. "25–35 min"
-  priceFromEUR: number;
+  durationLabel: string;
   description: string;
+  image?: string;
 };
-
+// Travel times are planning estimates; the booking provider confirms each fare.
 export const routes: TransferRoute[] = [
   {
     slug: "tirana-airport-to-tirana",
     city: "Tirana",
-    distanceKm: 28,
-    durationLabel: "25–35 min",
-    priceFromEUR: 25,
+    durationLabel: "About 30–45 min",
     description:
-      "The short hop into the capital — hotels, Blloku, and the city center, with your driver tracking your flight and waiting at arrivals.",
+      "Explore the capital’s cafés, museums and lively city neighbourhoods.",
   },
   {
     slug: "tirana-airport-to-durres",
-    city: "Durres",
-    distanceKm: 35,
-    durationLabel: "35–45 min",
-    priceFromEUR: 30,
+    city: "Durrës",
+    durationLabel: "About 40–60 min",
     description:
-      "Straight to Albania's main beach city and port town, ideal for a quick coastal start to your trip.",
+      "Head to the Adriatic coast, seaside hotels and historic harbour city.",
   },
   {
-    slug: "tirana-airport-to-shkoder",
-    city: "Shkoder",
-    distanceKm: 100,
-    durationLabel: "1h 25 min",
-    priceFromEUR: 65,
-    description:
-      "North to the lake city and gateway to the Albanian Alps — comfortable, direct, no transfers.",
+    slug: "tirana-airport-to-golem",
+    city: "Golem",
+    durationLabel: "About 50–75 min",
+    description: "A direct arrival at the beach resorts south of Durrës.",
   },
   {
     slug: "tirana-airport-to-vlore",
-    city: "Vlore",
-    distanceKm: 150,
-    durationLabel: "2h 15 min",
-    priceFromEUR: 85,
+    city: "Vlorë",
+    durationLabel: "About 2–3 hours",
     description:
-      "Down the coast to Vlore, with a fixed price agreed before you land — no surge pricing on arrival.",
+      "Start your coastal journey where the Adriatic meets the Ionian Sea.",
+  },
+  {
+    slug: "tirana-airport-to-berat",
+    city: "Berat",
+    durationLabel: "About 2–3 hours",
+    description:
+      "Travel to the riverside city known for its hillside Ottoman architecture.",
+  },
+  {
+    slug: "tirana-airport-to-shkoder",
+    city: "Shkodër",
+    durationLabel: "About 1.5–2 hours",
+    description:
+      "Discover the northern lake city and gateway to the Albanian Alps.",
+  },
+  {
+    slug: "tirana-airport-to-theth",
+    city: "Theth",
+    durationLabel: "About 3.5–5 hours",
+    description:
+      "Continue into the mountains to the village at the heart of the Albanian Alps.",
+  },
+  {
+    slug: "tirana-airport-to-dhermi",
+    city: "Dhërmi",
+    durationLabel: "About 3–4 hours",
+    description: "Reach the beaches and villages of the Albanian Riviera.",
+  },
+  {
+    slug: "tirana-airport-to-himare",
+    city: "Himarë",
+    durationLabel: "About 3.5–4.5 hours",
+    description:
+      "Arrive at a relaxed coastal base for exploring the southern Riviera.",
   },
   {
     slug: "tirana-airport-to-sarande",
-    city: "Sarande",
-    distanceKm: 275,
-    durationLabel: "3h 45 min",
-    priceFromEUR: 145,
+    city: "Sarandë",
+    durationLabel: "About 4–5 hours",
     description:
-      "The full run to the Albanian Riviera. Rest stops on request, and your driver knows the road well.",
+      "Enjoy a direct transfer to the southern coast and seafront promenade.",
+  },
+  {
+    slug: "tirana-airport-to-ksamil",
+    city: "Ksamil",
+    durationLabel: "About 4.5–5.5 hours",
+    description:
+      "Travel directly to the seaside village near Butrint National Park.",
+  },
+  {
+    slug: "tirana-airport-to-kruje",
+    city: "Krujë",
+    durationLabel: "About 40–60 min",
+    description:
+      "Visit the historic castle town and traditional bazaar in the hills.",
   },
 ];
-
 export function getRouteBySlug(slug: string) {
-  return routes.find((r) => r.slug === slug);
+  return routes.find((route) => route.slug === slug);
 }
