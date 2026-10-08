@@ -160,8 +160,8 @@ export default async function RoutePage({ params }: Props) {
             <Image
               src={route.image.src}
               alt={route.image.alt}
-              width={route.image.width}
-              height={route.image.height}
+              fill
+              style={{ objectPosition: route.image.position }}
               sizes="(max-width:780px) calc(100vw - 32px), (max-width:1220px) calc(100vw - 40px), 1180px"
               priority
             />

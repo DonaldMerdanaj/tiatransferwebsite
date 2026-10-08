@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Icon } from "@/components/Icon";
 import { routes } from "@/lib/data/routes";
 
 export const metadata: Metadata = {
@@ -28,31 +30,54 @@ export default function RoutesIndexPage() {
           Explore private transfers across Albania, with flight tracking and
           airport meet-and-greet. Prices are confirmed in the booking form.
         </p>
-        <div className="mt-10 overflow-hidden rounded-[10px] border border-[#e6eaf0] bg-white">
+        <div className="destination-grid mt-10">
           {routes.map((route, i) => (
-            <a
-              key={route.slug}
-              href={`/routes/${route.slug}`}
-              className="grid items-center gap-3 border-b border-[#e6eaf0] px-5 py-5 last:border-0 hover:bg-[#f7f9fa] sm:grid-cols-[1.4fr_1fr_1fr_1fr]"
-            >
-              <div className="flex items-center gap-3">
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-[#f9e1e2] text-xs font-bold text-[#c5161d]">
-                  0{i + 1}
-                </span>
-                <span className="font-semibold">
-                  Tirana Airport → {route.city}
-                </span>
+            <article className="destination-card" key={route.slug}>
+              {route.image ? (
+                <div className="destination-photo">
+                  <Image
+                    src={route.image.src}
+                    alt={route.image.alt}
+                    fill
+                    sizes="(max-width:520px) calc(100vw - 40px), (max-width:900px) calc(50vw - 31px), 400px"
+                    style={{ objectPosition: route.image.position }}
+                  />
+                </div>
+              ) : (
+                <div className="destination-label">
+                  <Icon name="pin" />
+                  <span>Albania / {String(i + 1).padStart(2, "0")}</span>
+                </div>
+              )}
+              <div className="destination-body">
+                <h2 className="text-[23px] font-bold">
+                  <a
+                    href={`/routes/${route.slug}`}
+                    className="hover:text-[#d9161d]"
+                  >
+                    {route.city}
+                  </a>
+                </h2>
+                <p>{route.description}</p>
+                <p className="journey-time">
+                  <Icon name="clock" />
+                  {route.durationLabel}
+                </p>
+                <a
+                  className="button button-outline"
+                  href={`/booking?destination=${encodeURIComponent(route.city)}`}
+                  aria-label={`Book Transfer to ${route.city}`}
+                >
+                  Book Transfer <Icon name="arrow" />
+                </a>
               </div>
-              <span className="text-sm text-[#647386]">Private transfer</span>
-              <span className="text-sm text-[#647386]">
-                {route.durationLabel}
-              </span>
-              <span className="text-sm font-semibold text-[#ef1d25]">
-                Get a quote →
-              </span>
-            </a>
+            </article>
           ))}
         </div>
+        <p className="section-note">
+          Travel times are approximate and depend on traffic, weather and your
+          final address. Review your confirmed fare in the booking form.
+        </p>
       </main>
       <SiteFooter />
     </div>

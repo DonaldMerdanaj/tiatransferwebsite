@@ -709,6 +709,9 @@ main a[class*="bg-[#ef1d25]"]:hover {
 .destination-photo img {
   object-fit: cover;
 }
+.destination-card .button-outline {
+  color: var(--red-dark);
+}
 .destination-label {
   background: linear-gradient(120deg, #fff3f3, #f5f7f9);
   padding: 20px 24px;
@@ -1548,6 +1551,9 @@ main a[class*="bg-[#ef1d25]"]:hover {
   background: var(--red-dark);
 }
 .destination-page-photo {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-height: 660px;
   margin: 32px 0;
   overflow: hidden;
   border-radius: 12px;
@@ -1556,7 +1562,8 @@ main a[class*="bg-[#ef1d25]"]:hover {
 .destination-page-photo img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 .destination-jump-links {
   display: flex;

@@ -12,7 +12,7 @@ The homepage keeps its airport cover and other content sections. After 120px of 
 
 ## Facts and assets still requiring owner input
 
-- No approved destination or scenic photographs were supplied. Destination cards currently use clean typographic headers without pretending airport images are destination photographs. The actual uploaded airport photograph is used for the hero, pickup guide, guide previews and final CTA. Destination data supports an optional local `image` for later approved photography.
+- All 12 destination photographs supplied through GitHub are used on homepage cards, the destination listing and individual transfer pages. Their optimized WebP copies are in `public/images/destinations`, with verified intrinsic dimensions and scene-specific alt text in route data. Original uploaded files are retained. Copies preserve the original image composition; responsive card/page frames use focal positioning for Tirana, Durrës, Himarë and Theth. Transfer-page social previews and ImageObject structured data reference the matching destination photo. The 40.49 MB source set becomes 3.95 MB of optimized copies before responsive Next.js delivery. The supplied airport photograph remains on the homepage cover, pickup guide, guide previews and final CTA.
 - No genuine customer reviews or verified review profile were supplied, so a reviews section is omitted.
 - No fares are advertised. The former sample prices and unverified waiting/cancellation promises were removed from destination data and templates. Journey times are explicitly estimates.
 - Contact page email/phone are retained from the supplied project, not independently verified. Footer directs visitors to that page. No social profiles or company registration details were invented.
@@ -52,3 +52,7 @@ The production build passed. Homepage and `/booking` layouts passed at 375, 768 
 ## Booking consolidation checks
 
 Homepage checks at 320, 375, 768 and 1440px confirmed no booking iframe or provider requests, preserved destination/FAQ/guide counts, no horizontal overflow, and the Book Now-only header while scrolling. Header height stays unchanged during normal collapse and full navigation returns at the top. Closing an open mobile menu by scrolling preserves keyboard focus on Book Now. All 12 destination pages return 200 with booking CTAs and no iframe. The booking page accepts known destination queries, ignores unknown or repeated values, and keeps its standard header. A mocked provider verified the existing iframe URL/site key and resizing; no real transaction was submitted. Browser checks reported no application errors.
+
+## Destination photography checks
+
+The production build passed. All 12 transfer-page photos loaded at 375 and 1440px with matching social metadata and ImageObject dimensions, no horizontal overflow, and no application errors. Homepage photos loaded at 375, 768 and 1440px; the destination listing passed at 375 and 768px. The last desktop listing check remained incomplete after the Krujë image stalled in the browser; direct image requests returned 200. The user requested pushing the current changes without finishing that check.

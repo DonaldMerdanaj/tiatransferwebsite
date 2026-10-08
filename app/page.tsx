@@ -231,6 +231,7 @@ export default function Home() {
                         src={r.image.src}
                         alt={r.image.alt}
                         fill
+                        style={{ objectPosition: r.image.position }}
                         sizes="(max-width:520px) calc(100vw - 32px), (max-width:780px) calc((100vw - 54px) / 2), (max-width:900px) calc((100vw - 62px) / 2), (max-width:1220px) calc((100vw - 84px) / 3), 379px"
                       />
                     </div>
