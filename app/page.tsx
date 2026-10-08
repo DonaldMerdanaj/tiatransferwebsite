@@ -255,8 +255,9 @@ export default function Home() {
                     <a
                       className="button button-outline"
                       href={`/booking?destination=${encodeURIComponent(r.city)}`}
+                      aria-label={`Book Now for ${r.city}`}
                     >
-                      Book Transfer <Icon name="arrow" />
+                      Book Now <Icon name="arrow" />
                     </a>
                   </div>
                 </article>

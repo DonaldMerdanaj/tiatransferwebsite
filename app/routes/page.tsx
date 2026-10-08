@@ -66,9 +66,9 @@ export default function RoutesIndexPage() {
                 <a
                   className="button button-outline"
                   href={`/booking?destination=${encodeURIComponent(route.city)}`}
-                  aria-label={`Book Transfer to ${route.city}`}
+                  aria-label={`Book Now for ${route.city}`}
                 >
-                  Book Transfer <Icon name="arrow" />
+                  Book Now <Icon name="arrow" />
                 </a>
               </div>
             </article>

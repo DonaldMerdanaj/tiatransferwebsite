@@ -64,12 +64,13 @@ export default async function BlogPostPage({ params }: Props) {
 
         {relatedRoute && (
           <a
-            href={`/routes/${relatedRoute.slug}`}
+            href={`/booking?destination=${encodeURIComponent(relatedRoute.city)}`}
+            aria-label={`Book Now for ${relatedRoute.city}`}
             className="mt-12 flex items-center justify-between rounded-[10px] bg-[#f5f7f9] p-5 hover:bg-[#e1e0df]"
           >
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[.18em] text-[#ef1d25]">
-                Book this transfer
+                Book Now
               </p>
               <p className="mt-1 font-semibold">
                 Tirana Airport → {relatedRoute.city} — get a quote
