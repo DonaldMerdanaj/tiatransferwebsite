@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { BookingWidget } from "@/components/BookingWidget";
 import { Icon } from "@/components/Icon";
 import { routes } from "@/lib/data/routes";
 import { faq } from "@/lib/data/faq";
@@ -148,7 +147,7 @@ export default function Home() {
   };
   return (
     <>
-      <SiteHeader />
+      <SiteHeader collapseOnScroll />
       <main id="main-content" className="premium-home" tabIndex={-1}>
         <section className="premium-hero" aria-labelledby="hero-title">
           <picture className="premium-hero-picture">
@@ -183,7 +182,7 @@ export default function Home() {
                 transportation.
               </p>
               <div className="hero-actions">
-                <a className="button button-red" href="#quote">
+                <a className="button button-red" href="/booking">
                   Book your transfer <Icon name="arrow" />
                 </a>
                 <a className="button button-outline-light" href="#destinations">
@@ -201,27 +200,6 @@ export default function Home() {
                 </span>
               </div>
             </div>
-            <section
-              id="quote"
-              className="hero-booking"
-              aria-labelledby="booking-title"
-            >
-              <div className="booking-card">
-                <div className="booking-heading">
-                  <div>
-                    <p className="eyebrow-premium">
-                      A smooth start to your trip
-                    </p>
-                    <h2 id="booking-title">Book your airport transfer</h2>
-                  </div>
-                  <span>
-                    <Icon name="shield" />
-                    Secure booking
-                  </span>
-                </div>
-                <BookingWidget />
-              </div>
-            </section>
           </div>
         </section>
         <section className="trust-premium" aria-label="Transfer benefits">
@@ -273,7 +251,7 @@ export default function Home() {
                     </p>
                     <a
                       className="button button-outline"
-                      href={`/routes/${r.slug}#quote`}
+                      href={`/booking?destination=${encodeURIComponent(r.city)}`}
                     >
                       Book Transfer <Icon name="arrow" />
                     </a>
@@ -447,7 +425,7 @@ export default function Home() {
               Book your private airport transfer today and enjoy comfortable,
               reliable transportation throughout Albania.
             </p>
-            <a className="button button-red" href="#quote">
+            <a className="button button-red" href="/booking">
               Book your transfer <Icon name="arrow" />
             </a>
           </div>

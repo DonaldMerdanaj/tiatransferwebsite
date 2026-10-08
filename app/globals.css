@@ -60,6 +60,28 @@ h2 {
   background: #fff;
   border-bottom: 1px solid #edf0f3;
 }
+.site-header--booking-only {
+  background: transparent;
+  border-bottom-color: transparent;
+  pointer-events: none;
+}
+.site-header--booking-only .brand,
+.site-header--booking-only .desktop-nav,
+.site-header--booking-only .menu-button,
+.site-header--booking-only .mobile-nav {
+  display: none;
+}
+.site-header--booking-only .nav-wrap {
+  justify-content: flex-end;
+}
+.site-header--booking-only .header-book,
+.site-header--booking-only .skip-link {
+  pointer-events: auto;
+}
+.site-header--booking-only .header-book {
+  display: flex;
+  box-shadow: 0 4px 20px #101a2626;
+}
 .nav-wrap {
   width: min(1180px, calc(100% - 48px));
   height: 72px;
@@ -1442,68 +1464,33 @@ main a[class*="bg-[#ef1d25]"]:hover {
   object-fit: cover;
 }
 
-/* Keep the supplied booking form on the airport cover. */
+/* The airport cover leads to the dedicated booking page. */
 .premium-hero {
-  padding: 64px 0;
+  padding: 80px 0;
   min-height: 620px;
 }
 .hero-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: 48px;
-  align-items: center;
+  display: block;
 }
 .hero-copy-premium {
   min-width: 0;
+  max-width: 810px;
 }
 .hero-layout h1 {
-  font-size: clamp(36px, 4vw, 56px);
-}
-.hero-booking {
-  min-width: 0;
-  align-self: start;
-  scroll-margin-top: 92px;
-  color: var(--ink);
-}
-.hero-booking .booking-card {
-  box-shadow: 0 16px 48px #00000026;
-}
-.hero-booking .booking-heading {
-  padding: 22px;
-  gap: 12px;
-}
-.hero-booking .booking-heading h2 {
-  font-size: 22px;
-}
-.hero-booking .booking-heading > span {
-  font-size: 0;
-}
-.hero-booking .booking-heading > span .line-icon {
-  width: 22px;
+  font-size: clamp(36px, 4.7vw, 64px);
 }
 .booking-frame {
   height: 250px;
 }
 @media (max-width: 1050px) {
-  .hero-layout {
-    gap: 28px;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
   .hero-layout h1 {
-    font-size: 42px;
+    font-size: 48px;
   }
 }
 @media (max-width: 900px) {
-  .hero-layout {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 32px;
-  }
   .premium-hero {
-    padding: 44px 0 36px;
+    padding: 56px 0;
     min-height: 0;
-  }
-  .hero-booking {
-    width: 100%;
   }
   .hero-layout h1 {
     font-size: 40px;
@@ -1516,12 +1503,25 @@ main a[class*="bg-[#ef1d25]"]:hover {
   .hero-layout h1 {
     font-size: 36px;
   }
-  .hero-booking .booking-heading {
-    padding: 20px;
-  }
-  .hero-booking .booking-heading h2 {
-    font-size: 20px;
-  }
+}
+.route-booking-cta {
+  padding: 28px;
+}
+.route-booking-cta .booking-heading {
+  padding: 0;
+  border: 0;
+}
+.route-booking-cta .booking-heading h2 {
+  margin: 0;
+}
+.route-booking-cta .button-red {
+  background: var(--red-dark);
+}
+.route-booking-cta p {
+  max-width: 680px;
+  margin: 16px 0 24px;
+  color: var(--muted);
+  line-height: 1.8;
 }
 .booking-fallback .button-red {
   background: var(--red-dark);

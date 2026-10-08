@@ -6,7 +6,9 @@ The primary red remains #ef1d25 for visual accents. Dark red #d9161d is used for
 
 ## Booking
 
-The original booking service URL and site key are retained. Every booking iframe now uses the supplied /booking endpoint and eto-iframe-booking ID, starts at 250px, and uses the provider's supplied resizer settings (log:false, targetOrigin:"*", checkOrigin:false), with no fixed minimum height. The homepage booking card is on the airport hero beside the headline on desktop, and below the headline within the cover on mobile. A dedicated /booking page uses the same header, footer and engine. The provider controls whether the fields inside its cross-origin frame are horizontal or vertical; parent CSS cannot alter its layout. If the provider script fails or does not initialize within 15 seconds, a compact direct-booking link replaces the frame. No completed transaction was performed.
+The original booking service URL and site key are retained. The booking engine is embedded only on `/booking`, with the shared header and footer. It uses the supplied /booking provider endpoint and eto-iframe-booking ID, starts at 250px, and uses the provider's supplied resizer settings (log:false, targetOrigin:"*", checkOrigin:false), with no fixed minimum height. Homepage and destination buttons open the booking page; valid destination selections are passed to the engine. The provider controls whether the fields inside its cross-origin frame are horizontal or vertical; parent CSS cannot alter its layout. If the provider script fails or does not initialize within 15 seconds, a compact direct-booking link replaces the frame. No completed transaction was performed.
+
+The homepage keeps its airport cover and other content sections. After 120px of scroll, its sticky header becomes transparent and hides the logo, navigation and menu button, leaving a floating Book Now link. Full navigation returns near the top. Other pages keep the standard header. The header retains its layout height to avoid shifting page content; the compact header passes pointer events through except on its booking and focused skip links. An open mobile menu closes on collapse, and focus transfers to the booking link if a focused header control is hidden.
 
 ## Facts and assets still requiring owner input
 
@@ -43,6 +45,10 @@ The hero uses pre-generated 480, 640, 828 and 1440px WebP sources to avoid runti
 
 ## Booking form update
 
-The supplied `/booking?site_key=...` embed is now used on the homepage, destination pages and new `/booking` page. It starts at 250px with `scrolling="no"` and the provider's exact iframe ID, then resizes without a minimum-height constraint. Initialization supports modern and legacy resizer callbacks, and an unloaded script can retry after remount. Header Book Now buttons and a footer booking link open `/booking`.
+The supplied `/booking?site_key=...` embed is now used only on `/booking`. It starts at 250px with `scrolling="no"` and the provider's exact iframe ID, then resizes without a minimum-height constraint. Initialization supports modern and legacy resizer callbacks, and an unloaded script can retry after remount. Header Book Now buttons and a footer booking link open `/booking`.
 
 The production build passed. Homepage and `/booking` layouts passed at 375, 768 and 1440px with no horizontal overflow; the new booking page's automated accessibility check found no violations. Mocked provider integration checks verified URL, iframe attributes, resizer settings, height adjustment, and that an initialized form survives the timeout. The live booking provider remains blocked by the environment proxy, so a real booking was not submitted. Earlier Lighthouse measurements above describe the previous homepage layout, not a new measurement of this update.
+
+## Booking consolidation checks
+
+Homepage checks at 320, 375, 768 and 1440px confirmed no booking iframe or provider requests, preserved destination/FAQ/guide counts, no horizontal overflow, and the Book Now-only header while scrolling. Header height stays unchanged during normal collapse and full navigation returns at the top. Closing an open mobile menu by scrolling preserves keyboard focus on Book Now. All 12 destination pages return 200 with booking CTAs and no iframe. The booking page accepts known destination queries, ignores unknown or repeated values, and keeps its standard header. A mocked provider verified the existing iframe URL/site key and resizing; no real transaction was submitted. Browser checks reported no application errors.

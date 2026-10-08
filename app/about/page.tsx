@@ -37,7 +37,7 @@ export default function About() {
             Explore destinations →
           </a>
         </p>
-        <a className="button button-red" href="/#quote">
+        <a className="button button-red" href="/booking">
           Book your transfer →
         </a>
       </main>

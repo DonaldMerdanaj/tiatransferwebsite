@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BookingWidget } from "@/components/BookingWidget";
+import { routes } from "@/lib/data/routes";
 
 const title = "Book Your Tirana Airport Transfer | TiaTransfer";
 const description =
@@ -25,7 +26,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BookingPage() {
+type Props = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function BookingPage({ searchParams }: Props) {
+  const requestedDestination = (await searchParams).destination;
+  const destination =
+    typeof requestedDestination === "string"
+      ? routes.find(
+          (route) =>
+            route.city.toLocaleLowerCase("en") ===
+            requestedDestination.trim().normalize("NFC").toLocaleLowerCase("en"),
+        )?.city
+      : undefined;
+
   return (
     <>
       <SiteHeader />
@@ -47,9 +62,13 @@ export default function BookingPage() {
           aria-labelledby="booking-heading"
         >
           <div className="booking-heading">
-            <h2 id="booking-heading">Choose your transfer</h2>
+            <h2 id="booking-heading">
+              {destination
+                ? `Choose your transfer to ${destination}`
+                : "Choose your transfer"}
+            </h2>
           </div>
-          <BookingWidget />
+          <BookingWidget destination={destination} />
         </section>
         <p>
           Need help planning your journey?{" "}

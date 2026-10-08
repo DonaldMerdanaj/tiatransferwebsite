@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 const nav = [
   { label: "Home", href: "/" },
@@ -9,20 +9,58 @@ const nav = [
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
-export function SiteHeader() {
+export function SiteHeader({
+  collapseOnScroll = false,
+}: {
+  collapseOnScroll?: boolean;
+}) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const path = usePathname();
+  const header = useRef<HTMLElement>(null);
   const button = useRef<HTMLButtonElement>(null);
+  const bookingLink = useRef<HTMLAnchorElement>(null);
+  const moveFocusToBooking = useRef(false);
+  const bookingOnly = collapseOnScroll && scrolled;
+  useEffect(() => {
+    if (!collapseOnScroll) return;
+    const update = () => {
+      const compact = window.scrollY > 120;
+      if (compact) {
+        const focused = document.activeElement;
+        if (
+          focused instanceof HTMLElement &&
+          header.current?.contains(focused) &&
+          focused !== bookingLink.current &&
+          !focused.classList.contains("skip-link")
+        ) {
+          moveFocusToBooking.current = true;
+        }
+        setOpen(false);
+      }
+      setScrolled(compact);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, [collapseOnScroll]);
+  useEffect(() => {
+    if (bookingOnly && moveFocusToBooking.current) {
+      bookingLink.current?.focus({ preventScroll: true });
+    }
+    moveFocusToBooking.current = false;
+  }, [bookingOnly]);
   function close() {
     setOpen(false);
   }
   return (
     <header
-      className="site-header"
+      ref={header}
+      className={`site-header${bookingOnly ? " site-header--booking-only" : ""}`}
       onKeyDown={(e) => {
         if (e.key === "Escape") {
           close();
-          button.current?.focus();
+          (bookingOnly ? bookingLink.current : button.current)?.focus();
         }
       }}
     >
@@ -54,7 +92,7 @@ export function SiteHeader() {
             </a>
           ))}
         </nav>
-        <a className="header-book" href="/booking">
+        <a ref={bookingLink} className="header-book" href="/booking">
           Book Now <span aria-hidden="true">→</span>
         </a>
         <button
@@ -70,7 +108,7 @@ export function SiteHeader() {
       </div>
       <nav
         id="mobile-navigation"
-        hidden={!open}
+        hidden={!open || bookingOnly}
         className="mobile-nav"
         aria-label="Mobile navigation"
       >

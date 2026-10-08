@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { BookingWidget } from "@/components/BookingWidget";
 import { Icon } from "@/components/Icon";
 import { routes, getRouteBySlug } from "@/lib/data/routes";
 import { getRouteGuide } from "@/lib/data/route-guides";
@@ -71,6 +70,7 @@ export default async function RoutePage({ params }: Props) {
   if (!route) notFound();
   const guide = getRouteGuide(slug);
   const url = `${site}/routes/${slug}`;
+  const bookingHref = `/booking?destination=${encodeURIComponent(route.city)}`;
   const related = guide.relatedSlugs
     .map(getRouteBySlug)
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
@@ -292,7 +292,7 @@ export default async function RoutePage({ params }: Props) {
         </div>
         <section
           id="quote"
-          className="booking-card route-booking"
+          className="booking-card route-booking route-booking-cta"
           aria-labelledby="destination-booking-title"
         >
           <div className="booking-heading">
@@ -300,7 +300,13 @@ export default async function RoutePage({ params }: Props) {
               Book your transfer to {route.city}
             </h2>
           </div>
-          <BookingWidget destination={route.city} />
+          <p>
+            Choose your travel dates and vehicle, then review your final price
+            and journey details on our booking page.
+          </p>
+          <a className="button button-red" href={bookingHref}>
+            Book your transfer to {route.city} <Icon name="arrow" />
+          </a>
         </section>
         <nav className="related-destinations" aria-label="Related destinations">
           <h2>Other destinations to consider</h2>

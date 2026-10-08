@@ -46,7 +46,7 @@ export default function FleetPage() {
                 <h2 className="text-xl font-bold">{car.name}</h2>
                 <p className="mt-1 text-sm text-[#647386]">{car.note}</p>
                 <a
-                  href="/#quote"
+                  href="/booking"
                   className="mt-4 inline-block text-sm font-bold text-[#ef1d25] hover:underline"
                 >
                   Book this vehicle →
