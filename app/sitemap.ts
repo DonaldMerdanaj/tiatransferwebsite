@@ -7,7 +7,16 @@ const SITE_URL = "https://tiatransfer.com";
 // Fully programmatic — every route and blog post you add to lib/data/*
 // shows up here automatically, no manual sitemap edits.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages = ["", "/routes", "/fleet", "/faq", "/about", "/contact", "/blog"].map((path) => ({
+  const staticPages = [
+    "",
+    "/booking",
+    "/routes",
+    "/fleet",
+    "/faq",
+    "/about",
+    "/contact",
+    "/blog",
+  ].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: new Date(),
   }));

@@ -1,8 +1,8 @@
 "use client";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 const origin = "https://app.tiranaairportshuttle.com";
 const source = `${origin}/assets/plugins/iframe-resizer/iframeResizer.min.js`;
-const widget = `${origin}/booking/widget?site_key=7e3f3d3085b900d598bc40543d611575`;
+const widget = `${origin}/booking?site_key=7e3f3d3085b900d598bc40543d611575`;
 type ResizedFrame = HTMLIFrameElement & {
   iFrameResizer?: { removeListeners?: () => void };
 };
@@ -13,7 +13,7 @@ type ResizeWindow = Window & {
   ) => unknown;
 };
 export function BookingWidget({ destination }: { destination?: string }) {
-  const id = `booking-${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
+  const id = "eto-iframe-booking";
   const [failed, setFailed] = useState(false);
   const url = destination
     ? `${widget}&destination=${encodeURIComponent(destination)}`
@@ -22,7 +22,13 @@ export function BookingWidget({ destination }: { destination?: string }) {
     let disposed = false;
     let timer: ReturnType<typeof setTimeout>;
     const fail = () => {
-      if (!disposed) setFailed(true);
+      if (!disposed) {
+        setFailed(true);
+        const failedScript = document.querySelector<HTMLScriptElement>(
+          "script[data-tia-resizer]",
+        );
+        if (!(window as ResizeWindow).iFrameResize) failedScript?.remove();
+      }
     };
     const init = () => {
       if (disposed) return;
@@ -34,12 +40,15 @@ export function BookingWidget({ destination }: { destination?: string }) {
       try {
         resize(
           {
-            checkOrigin: [origin],
+            targetOrigin: "*",
+            checkOrigin: false,
             log: false,
-            heightCalculationMethod: "lowestElement",
             onInit: () => clearTimeout(timer),
+            onResized: () => clearTimeout(timer),
+            initCallback: () => clearTimeout(timer),
+            resizedCallback: () => clearTimeout(timer),
           },
-          `#${id}`,
+          `iframe#${id}`,
         );
       } catch {
         fail();
@@ -79,6 +88,11 @@ export function BookingWidget({ destination }: { destination?: string }) {
           title="TiaTransfer secure transfer booking form"
           src={url}
           allow="geolocation"
+          width="100%"
+          height={250}
+          scrolling="no"
+          frameBorder="0"
+          style={{ width: "1px", minWidth: "100%", border: 0 }}
           className="booking-frame"
           onError={() => setFailed(true)}
         />

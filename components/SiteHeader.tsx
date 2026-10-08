@@ -54,7 +54,7 @@ export function SiteHeader() {
             </a>
           ))}
         </nav>
-        <a className="header-book" href="/#quote">
+        <a className="header-book" href="/booking">
           Book Now <span aria-hidden="true">→</span>
         </a>
         <button
@@ -88,7 +88,7 @@ export function SiteHeader() {
             {item.label}
           </a>
         ))}
-        <a className="mobile-quote" href="/#quote" onClick={close}>
+        <a className="mobile-quote" href="/booking" onClick={close}>
           Book Now →
         </a>
       </nav>

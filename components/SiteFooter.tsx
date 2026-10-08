@@ -20,6 +20,7 @@ export function SiteFooter() {
           <h2>Quick links</h2>
           <a href="/">Home</a>
           <a href="/routes">Destinations</a>
+          <a href="/booking">Book a Transfer</a>
           <a href="/fleet">Our Fleet</a>
           <a href="/about">About Us</a>
           <a href="/contact">Contact</a>

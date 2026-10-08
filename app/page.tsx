@@ -152,60 +152,76 @@ export default function Home() {
       <main id="main-content" className="premium-home" tabIndex={-1}>
         <section className="premium-hero" aria-labelledby="hero-title">
           <picture className="premium-hero-picture">
-          <img src="/images/tia-airport-1440.webp" srcSet="/images/tia-airport-480.webp 480w, /images/tia-airport-640.webp 640w, /images/tia-airport-828.webp 828w, /images/tia-airport-1440.webp 1440w" sizes="100vw" alt="Travellers arriving outside Tirana International Airport" width={1440} height={1800} fetchPriority="high" decoding="async" className="premium-hero-photo" />
-        </picture>
-        <div className="premium-hero-overlay" />
-          <div className="content-width hero-copy-premium">
-            <p className="eyebrow-premium">Premium airport transfer service</p>
-            <h1 id="hero-title">
-              Tirana Airport Transfers <span>– Private &amp; Reliable</span>
-            </h1>
-            <p className="hero-fixed">
-              Your journey. Your driver. One fixed price.
-            </p>
-            <p className="hero-description">
-              Book your private transfer from Tirana International Airport to
-              destinations across Albania. Enjoy professional drivers, flight
-              tracking, meet-and-greet service, and comfortable door-to-door
-              transportation.
-            </p>
-            <div className="hero-actions">
-              <a className="button button-red" href="#quote">
-                Book your transfer <Icon name="arrow" />
-              </a>
-              <a className="button button-outline-light" href="#destinations">
-                Explore destinations
-              </a>
-            </div>
-            <div className="hero-reassurance">
-              <span>
-                <Icon name="check" />
-                Private, door-to-door service
-              </span>
-              <span>
-                <Icon name="check" />
-                Price confirmed before travel
-              </span>
-            </div>
-          </div>
-        </section>
-        <section
-          id="quote"
-          className="booking-section content-width"
-          aria-labelledby="booking-title"
-        >
-          <div className="booking-card">
-            <div className="booking-heading">
-              <div>
-                <p className="eyebrow-premium">A smooth start to your trip</p>
-                <h2 id="booking-title">Book your airport transfer</h2>
+            <img
+              src="/images/tia-airport-1440.webp"
+              srcSet="/images/tia-airport-480.webp 480w, /images/tia-airport-640.webp 640w, /images/tia-airport-828.webp 828w, /images/tia-airport-1440.webp 1440w"
+              sizes="100vw"
+              alt="Travellers arriving outside Tirana International Airport"
+              width={1440}
+              height={1800}
+              fetchPriority="high"
+              decoding="async"
+              className="premium-hero-photo"
+            />
+          </picture>
+          <div className="premium-hero-overlay" />
+          <div className="content-width hero-layout">
+            <div className="hero-copy-premium">
+              <p className="eyebrow-premium">
+                Premium airport transfer service
+              </p>
+              <h1 id="hero-title">
+                Tirana Airport Transfers <span>– Private &amp; Reliable</span>
+              </h1>
+              <p className="hero-fixed">
+                Your journey. Your driver. One fixed price.
+              </p>
+              <p className="hero-description">
+                Book your private transfer from Tirana International Airport to
+                destinations across Albania. Enjoy professional drivers, flight
+                tracking, meet-and-greet service, and comfortable door-to-door
+                transportation.
+              </p>
+              <div className="hero-actions">
+                <a className="button button-red" href="#quote">
+                  Book your transfer <Icon name="arrow" />
+                </a>
+                <a className="button button-outline-light" href="#destinations">
+                  Explore destinations
+                </a>
               </div>
-              <span>
-                <Icon name="shield" />
-                Secure booking
-              </span>
+              <div className="hero-reassurance">
+                <span>
+                  <Icon name="check" />
+                  Private, door-to-door service
+                </span>
+                <span>
+                  <Icon name="check" />
+                  Price confirmed before travel
+                </span>
+              </div>
             </div>
-            <BookingWidget />
+            <section
+              id="quote"
+              className="hero-booking"
+              aria-labelledby="booking-title"
+            >
+              <div className="booking-card">
+                <div className="booking-heading">
+                  <div>
+                    <p className="eyebrow-premium">
+                      A smooth start to your trip
+                    </p>
+                    <h2 id="booking-title">Book your airport transfer</h2>
+                  </div>
+                  <span>
+                    <Icon name="shield" />
+                    Secure booking
+                  </span>
+                </div>
+                <BookingWidget />
+              </div>
+            </section>
           </div>
         </section>
         <section className="trust-premium" aria-label="Transfer benefits">

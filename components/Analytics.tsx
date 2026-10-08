@@ -32,7 +32,11 @@ export function Analytics({ measurementId }: { measurementId: string }) {
     w.gtag("config", measurementId, { anonymize_ip: true });
     const track = (e: MouseEvent) => {
       const a = (e.target as Element).closest("a");
-      if (a && a.getAttribute("href")?.endsWith("#quote")) {
+      if (
+        a &&
+        (a.getAttribute("href")?.endsWith("#quote") ||
+          a.getAttribute("href") === "/booking")
+      ) {
         w.gtag?.("event", "booking_interest", {
           link_url: a.getAttribute("href"),
         });
