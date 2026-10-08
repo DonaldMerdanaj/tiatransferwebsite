@@ -8,7 +8,7 @@ The new written material is practical transfer-planning guidance based on the su
 
 ## External research blocker
 
-No dedicated web-search tool is callable in this session. Ordinary HTTPS requests to search engines, Albania tourism, Tirana Airport and UNESCO return the configured proxy's 403 Forbidden response. No source pages were retrieved. Attempted destinations are not citations.
+No dedicated web-search tool is callable in this session. Following the environment restart on 8 October 2026, ordinary Bing HTML/RSS search requests succeed. Direct Albania tourism, Tirana Airport, UNESCO and selected publisher pages still return HTTP/proxy 403 responses. Search excerpts support limited general Tirana facts, but full source pages and detailed route information remain unread. Attempted destinations are not citations.
 
 A network configuration draft was saved with these additional hostnames:
 

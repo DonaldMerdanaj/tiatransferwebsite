@@ -3,7 +3,12 @@ export type TransferRoute = {
   city: string;
   durationLabel: string;
   description: string;
-  image?: string;
+  image?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 };
 // Travel times are planning estimates; the booking provider confirms each fare.
 export const routes: TransferRoute[] = [

@@ -250,10 +250,10 @@ export default function Home() {
                   {r.image ? (
                     <div className="destination-photo">
                       <Image
-                        src={r.image}
-                        alt={`View of ${r.city}, Albania`}
+                        src={r.image.src}
+                        alt={r.image.alt}
                         fill
-                        sizes="(max-width:640px) 100vw, (max-width:1000px) 50vw, 33vw"
+                        sizes="(max-width:520px) calc(100vw - 32px), (max-width:780px) calc((100vw - 54px) / 2), (max-width:900px) calc((100vw - 62px) / 2), (max-width:1220px) calc((100vw - 84px) / 3), 379px"
                       />
                     </div>
                   ) : (

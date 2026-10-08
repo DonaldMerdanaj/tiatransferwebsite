@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -24,14 +25,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = `Tirana Airport to ${route.city} Transfer | TiaTransfer`;
   const description = guide.metaDescription;
   const url = `${site}/routes/${route.slug}`;
-  const images = [
-    {
-      url: "/images/tia-airport.webp",
-      width: 1440,
-      height: 1800,
-      alt: "Travellers outside Tirana International Airport",
-    },
-  ];
+  const images = route.image
+    ? [
+        {
+          url: route.image.src,
+          width: route.image.width,
+          height: route.image.height,
+          alt: route.image.alt,
+        },
+      ]
+    : [
+        {
+          url: "/images/tia-airport.webp",
+          width: 1440,
+          height: 1800,
+          alt: "Travellers outside Tirana International Airport",
+        },
+      ];
   return {
     title,
     description,
@@ -85,6 +95,17 @@ export default async function RoutePage({ params }: Props) {
         dateModified: guide.updatedAt,
         mainEntity: { "@id": `${url}#service` },
         about: { "@type": "Place", name: route.city },
+        ...(route.image
+          ? {
+              primaryImageOfPage: {
+                "@type": "ImageObject",
+                contentUrl: `${site}${route.image.src}`,
+                width: route.image.width,
+                height: route.image.height,
+                caption: route.image.alt,
+              },
+            }
+          : {}),
         ...(guide.sources.length
           ? { citation: guide.sources.map((source) => source.url) }
           : {}),
@@ -134,6 +155,18 @@ export default async function RoutePage({ params }: Props) {
             Book your transfer to {route.city} <Icon name="arrow" />
           </a>
         </header>
+        {route.image && (
+          <div className="destination-page-photo">
+            <Image
+              src={route.image.src}
+              alt={route.image.alt}
+              width={route.image.width}
+              height={route.image.height}
+              sizes="(max-width:780px) calc(100vw - 32px), (max-width:1220px) calc(100vw - 40px), 1180px"
+              priority
+            />
+          </div>
+        )}
         <div className="route-facts" aria-label="Journey planning details">
           <p>
             <strong>{route.durationLabel}</strong>

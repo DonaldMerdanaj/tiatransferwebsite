@@ -1547,6 +1547,17 @@ main a[class*="bg-[#ef1d25]"]:hover {
   margin-top: 24px;
   background: var(--red-dark);
 }
+.destination-page-photo {
+  margin: 32px 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--soft);
+}
+.destination-page-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .destination-jump-links {
   display: flex;
   flex-wrap: wrap;
