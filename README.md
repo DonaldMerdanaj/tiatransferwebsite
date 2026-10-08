@@ -19,7 +19,7 @@ npm run start
 
 The homepage fleet section is omitted. Twelve destinations, ten FAQs and three travel guides are included. Fares are confirmed by the booking provider; no sample prices or fake testimonials are published.
 
-All twelve user-supplied destination photographs appear on the homepage cards, destination listing and matching transfer pages. Optimized local WebP assets include descriptive alt text and destination-specific social previews.
+All twelve user-supplied destination photographs appear on the destination listing and matching transfer pages. The homepage previews six destination cards and four FAQs, with Show more links to the complete Destinations and FAQ pages. Optimized local WebP assets include descriptive alt text and destination-specific social previews.
 
 The booking engine is embedded only on `/booking`. Homepage and destination booking buttons lead there; destination selections are carried through the URL. The homepage header shows only the floating Book Now button after scrolling past 120px and restores full navigation at the top.
 

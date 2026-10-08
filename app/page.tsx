@@ -10,6 +10,8 @@ import airport from "@/public/images/tia-airport.webp";
 const title = "Tirana Airport Transfers | Private Taxi & Shuttle | TiaTransfer";
 const description =
   "Book private Tirana Airport transfers with TiaTransfer. Enjoy fixed prices, professional drivers, flight tracking, and reliable door-to-door transportation across Albania.";
+const homepageRoutes = routes.slice(0, 6);
+const homepageFaq = faq.slice(0, 4);
 export const metadata: Metadata = {
   title,
   description,
@@ -137,7 +139,7 @@ export default function Home() {
       },
       {
         "@type": "FAQPage",
-        mainEntity: faq.map((f) => ({
+        mainEntity: homepageFaq.map((f) => ({
           "@type": "Question",
           name: f.question,
           acceptedAnswer: { "@type": "Answer", text: f.answer },
@@ -223,7 +225,7 @@ export default function Home() {
               text="Discover reliable private transfers from Tirana International Airport to Albania’s most popular destinations."
             />
             <div className="destination-grid">
-              {routes.map((r, i) => (
+              {homepageRoutes.map((r, i) => (
                 <article className="destination-card" key={r.slug}>
                   {r.image ? (
                     <div className="destination-photo">
@@ -264,6 +266,11 @@ export default function Home() {
               Travel times are approximate and depend on traffic, weather and
               your final address. Your price is confirmed in the booking form.
             </p>
+            <div className="mt-8 flex justify-center">
+              <a className="button button-outline" href="/routes">
+                Show more destinations <Icon name="arrow" />
+              </a>
+            </div>
           </div>
         </section>
         <section className="premium-section">
@@ -361,12 +368,15 @@ export default function Home() {
               text="Clear answers to help you plan your airport pickup."
             />
             <div className="faq-premium">
-              {faq.map((f) => (
+              {homepageFaq.map((f) => (
                 <details key={f.question}>
                   <summary>{f.question}</summary>
                   <p>{f.answer}</p>
                 </details>
               ))}
+              <a className="button button-outline mt-6" href="/faq">
+                Show more FAQs <Icon name="arrow" />
+              </a>
             </div>
           </div>
         </section>
