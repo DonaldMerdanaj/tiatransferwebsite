@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "TiaTransfer | Tirana Airport Transfers",
     description:
       "A calm, fixed-price airport transfer from Tirana Airport to wherever your Albania trip begins.",
-    images: [{ url: "/images/tia-hero.jpg", width: 1600, height: 1000, alt: "TiaTransfer airport transfer in Albania" }],
+    images: [{ url: "/images/tia-hero.jpg", width: 1440, height: 1800, alt: "TiaTransfer airport transfer in Albania" }],
   },
   twitter: {
     card: "summary_large_image",
