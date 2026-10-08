@@ -1530,3 +1530,149 @@ main a[class*="bg-[#ef1d25]"]:hover {
 .route-detail .eyebrow-premium {
   color: var(--red-dark);
 }
+.destination-intro {
+  max-width: 850px;
+}
+.destination-intro p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-top: 18px;
+}
+.destination-intro .eyebrow-premium {
+  font-size: 11px;
+  color: var(--red-dark);
+}
+.destination-intro .button {
+  margin-top: 24px;
+  background: var(--red-dark);
+}
+.destination-jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  border-block: 1px solid var(--line);
+  padding: 18px 0;
+  margin: 28px 0;
+  font-size: 13px;
+  color: var(--ink);
+}
+.destination-jump-links a {
+  padding: 6px 0;
+}
+.destination-jump-links a:hover {
+  color: var(--red-dark);
+}
+.destination-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 0.8fr);
+  gap: 56px;
+  align-items: start;
+}
+.destination-prose section,
+.destination-prose,
+.arrival-advice,
+.destination-faq {
+  scroll-margin-top: 110px;
+  margin-bottom: 36px;
+}
+.destination-detail h2 {
+  font-size: 26px;
+  font-weight: 750;
+  line-height: 1.25;
+  letter-spacing: -0.6px;
+  margin: 28px 0 16px;
+}
+.destination-prose p,
+.arrival-advice li,
+.destination-help p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.arrival-advice {
+  background: var(--soft);
+  border-radius: 12px;
+  padding: 24px;
+}
+.arrival-advice h2 {
+  margin-top: 0;
+}
+.arrival-advice ul {
+  list-style: none;
+  padding: 0;
+}
+.arrival-advice li {
+  display: flex;
+  gap: 12px;
+}
+.arrival-advice .line-icon {
+  width: 18px;
+  height: 18px;
+  margin-top: 5px;
+  color: var(--red-dark);
+}
+.destination-help {
+  position: sticky;
+  top: 100px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--soft);
+  padding: 26px;
+}
+.destination-help h2 {
+  font-size: 22px;
+  margin-top: 0;
+}
+.destination-help .button {
+  width: 100%;
+  margin: 8px 0 20px;
+}
+.destination-help .text-link {
+  display: block;
+  line-height: 1.8;
+}
+.destination-guide-link {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 24px;
+  margin: 32px 0;
+}
+.destination-guide-link a {
+  font-weight: 700;
+  font-size: 15px;
+}
+.destination-sources {
+  margin-top: 32px;
+}
+.destination-sources li {
+  margin: 12px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.destination-sources a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.destination-sources a:hover {
+  color: var(--red-dark);
+}
+@media (max-width: 900px) {
+  .destination-content-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .destination-help {
+    position: static;
+  }
+  .destination-intro p {
+    font-size: 15px;
+  }
+  .destination-detail h2 {
+    font-size: 24px;
+  }
+  .destination-intro .button {
+    width: 100%;
+  }
+}

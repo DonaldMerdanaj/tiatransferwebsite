@@ -18,12 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog",
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
-    lastModified: new Date(),
+    lastModified: new Date("2026-10-08T00:00:00Z"),
   }));
 
   const routePages = routes.map((r) => ({
     url: `${SITE_URL}/routes/${r.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date("2026-10-08T00:00:00Z"),
   }));
 
   const blogPages = posts.map((p) => ({

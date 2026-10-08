@@ -20,3 +20,5 @@ npm run start
 The homepage fleet section is omitted. Twelve destinations, ten FAQs and three travel guides are included. Fares are confirmed by the booking provider; no sample prices or fake testimonials are published.
 
 See [IMPLEMENTATION-NOTES.md](IMPLEMENTATION-NOTES.md) for booking resizing, optional analytics, checks, and the remaining approved assets and tracking configuration needed before launch. Completed-booking tracking is not active without the provider's supported completion contract.
+
+Destination pages include individual booking guidance and complete per-page SEO metadata. See [SEO-RESEARCH-STATUS.md](SEO-RESEARCH-STATUS.md) for the pending source research and saved environment network changes needed to finish it.

@@ -5,9 +5,9 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { routes } from "@/lib/data/routes";
 
 export const metadata: Metadata = {
-  title: "Tirana Airport Transfer Routes & Prices | TiaTransfer",
+  title: "Tirana Airport Transfer Destinations | TiaTransfer",
   description:
-    "All fixed-price transfer routes from Tirana Airport (TIA) — distance, duration, and price for every destination.",
+    "Explore private Tirana Airport transfers to 12 destinations across Albania. Find practical arrival guidance and confirm your fare in the booking form.",
   alternates: { canonical: "https://tiatransfer.com/routes" },
 };
 
@@ -22,7 +22,7 @@ export default function RoutesIndexPage() {
         className="mx-auto max-w-[1244px] px-5 py-16 lg:px-8"
       >
         <h1 className="text-4xl font-extrabold tracking-[-.03em] sm:text-[38px]">
-          Tirana Airport transfer routes & prices
+          Tirana Airport transfer destinations
         </h1>
         <p className="mt-4 max-w-[520px] text-sm leading-7 text-[#647386]">
           Explore private transfers across Albania, with flight tracking and

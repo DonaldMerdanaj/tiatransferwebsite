@@ -134,7 +134,7 @@ export default function Home() {
         name: "TiaTransfer",
         url: "https://tiatransfer.com/",
         description,
-        areaServed: routes.map((r) => ({ "@type": "City", name: r.city })),
+        areaServed: routes.map((r) => ({ "@type": "Place", name: r.city })),
       },
       {
         "@type": "FAQPage",
