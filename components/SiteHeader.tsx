@@ -56,7 +56,7 @@ export function SiteHeader({
   return (
     <header
       ref={header}
-      className={`site-header${bookingOnly ? " site-header--booking-only" : ""}`}
+      className={`site-header site-header--transfer${bookingOnly ? " site-header--booking-only" : ""}`}
       onKeyDown={(e) => {
         if (e.key === "Escape") {
           close();
@@ -67,6 +67,15 @@ export function SiteHeader({
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
+      <div className="th-support">
+        <div className="th-support-inner">
+          <span className="th-support-status">Airport transfers, 24/7</span>
+          <div className="th-support-links">
+            <a href="tel:+355694025025">+355 69 40 25 025</a>
+            <a className="th-support-email" href="mailto:hello@tiatransfer.com">hello@tiatransfer.com</a>
+          </div>
+        </div>
+      </div>
       <div className="nav-wrap">
         <a className="brand" href="/" aria-label="TiaTransfer home">
           <img

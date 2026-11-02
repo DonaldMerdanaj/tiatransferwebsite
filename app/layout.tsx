@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./transfer-home.css";
 import { Analytics } from "@/components/Analytics";
 
 export const metadata: Metadata = {
