@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { Icon } from "@/components/Icon";
 import { routes } from "@/lib/data/routes";
 import { faq } from "@/lib/data/faq";
-import { posts } from "@/lib/data/blog";
+import { fleet } from "@/lib/data/fleet";
 import airport from "@/public/images/tia-airport.webp";
 const title = "Tirana Airport Transfers | Private Taxi & Shuttle | TiaTransfer";
 const description =
@@ -36,420 +36,108 @@ export const metadata: Metadata = {
     images: ["/images/tia-airport.webp"],
   },
 };
-const trust = [
-  {
-    icon: "shield",
-    title: "Fixed prices",
-    text: "Transparent pricing without hidden charges.",
-  },
-  {
-    icon: "plane",
-    title: "Flight tracking",
-    text: "We monitor your flight for delays.",
-  },
-  {
-    icon: "welcome",
-    title: "Meet & greet",
-    text: "Your driver welcomes you at the airport.",
-  },
-  {
-    icon: "clock",
-    title: "24/7 transfers",
-    text: "Airport transportation available day and night.",
-  },
+
+const assurances = [
+  { icon: "shield", title: "One fixed price", text: "Review your fare before you confirm." },
+  { icon: "plane", title: "Flight tracking", text: "Pickup adjusted to your arrival." },
+  { icon: "welcome", title: "A personal welcome", text: "Meet your driver with your name sign." },
+  { icon: "clock", title: "Day or night", text: "Private airport transfers, 24/7." },
 ];
-const benefits = [
-  {
-    icon: "driver",
-    title: "Professional drivers",
-    text: "Experienced drivers providing reliable transportation.",
-  },
-  {
-    icon: "car",
-    title: "Comfortable vehicles",
-    text: "Clean, modern vehicles suitable for individuals, families and groups.",
-  },
-  {
-    icon: "shield",
-    title: "Fixed transfer prices",
-    text: "Transparent prices confirmed before your journey.",
-  },
-  {
-    icon: "plane",
-    title: "Flight monitoring",
-    text: "We track flight arrival times and adjust airport pickups accordingly.",
-  },
-  {
-    icon: "pin",
-    title: "Door-to-door service",
-    text: "Convenient transfers directly to your destination.",
-  },
+const services = [
+  { number: "01", title: "Airport transfers", text: "From Tirana Airport straight to your hotel, home or next stop. A private ride, planned around your arrival.", label: "Door to door", href: "/booking" },
+  { number: "02", title: "Across Albania", text: "From the capital to the coast, historic cities and the mountains. Find the route that starts your trip.", label: "Explore destinations", href: "/routes" },
+  { number: "03", title: "Families & groups", text: "Find a vehicle for your people and luggage. Share your requirements with us before you travel.", label: "Plan together", href: "/contact" },
 ];
-const steps = [
-  {
-    icon: "route",
-    title: "Choose your route",
-    text: "Enter your pickup location, destination, date and time.",
-  },
-  {
-    icon: "car",
-    title: "Select your vehicle",
-    text: "Choose a suitable vehicle and confirm your booking.",
-  },
-  {
-    icon: "welcome",
-    title: "Meet your driver",
-    text: "Your driver will meet you at the agreed pickup location.",
-  },
-];
-function SectionHeading({
-  eyebrow,
-  title,
-  text,
-}: {
-  eyebrow: string;
-  title: string;
-  text?: string;
-}) {
-  return (
-    <div className="section-heading-premium">
-      <p className="eyebrow-premium">{eyebrow}</p>
-      <h2>{title}</h2>
-      {text && <p>{text}</p>}
-    </div>
-  );
-}
 export default function Home() {
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://tiatransfer.com/#website",
-        name: "TiaTransfer",
-        url: "https://tiatransfer.com/",
-      },
-      {
-        "@type": "TaxiService",
-        "@id": "https://tiatransfer.com/#service",
-        name: "TiaTransfer",
-        url: "https://tiatransfer.com/",
-        description,
-        areaServed: routes.map((r) => ({ "@type": "Place", name: r.city })),
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: homepageFaq.map((f) => ({
-          "@type": "Question",
-          name: f.question,
-          acceptedAnswer: { "@type": "Answer", text: f.answer },
-        })),
-      },
+      { "@type": "WebSite", "@id": "https://tiatransfer.com/#website", name: "TiaTransfer", url: "https://tiatransfer.com/" },
+      { "@type": "TaxiService", "@id": "https://tiatransfer.com/#service", name: "TiaTransfer", url: "https://tiatransfer.com/", description, areaServed: routes.map((r) => ({ "@type": "Place", name: r.city })) },
+      { "@type": "FAQPage", mainEntity: homepageFaq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })) },
     ],
   };
   return (
     <>
-      <SiteHeader collapseOnScroll />
-      <main id="main-content" className="premium-home" tabIndex={-1}>
-        <section className="premium-hero" aria-labelledby="hero-title">
-          <picture className="premium-hero-picture">
-            <img
-              src="/images/tia-airport-1440.webp"
-              srcSet="/images/tia-airport-480.webp 480w, /images/tia-airport-640.webp 640w, /images/tia-airport-828.webp 828w, /images/tia-airport-1440.webp 1440w"
-              sizes="100vw"
-              alt="Travellers arriving outside Tirana International Airport"
-              width={1440}
-              height={1800}
-              fetchPriority="high"
-              decoding="async"
-              className="premium-hero-photo"
-            />
-          </picture>
-          <div className="premium-hero-overlay" />
-          <div className="content-width hero-layout">
-            <div className="hero-copy-premium">
-              <p className="eyebrow-premium">
-                Premium airport transfer service
-              </p>
-              <h1 id="hero-title">
-                Tirana Airport Transfers <span>– Private &amp; Reliable</span>
-              </h1>
-              <p className="hero-fixed">
-                Your journey. Your driver. One fixed price.
-              </p>
-              <p className="hero-description">
-                Book your private transfer from Tirana International Airport to
-                destinations across Albania. Enjoy professional drivers, flight
-                tracking, meet-and-greet service, and comfortable door-to-door
-                transportation.
-              </p>
-              <div className="hero-actions">
-                <a className="button button-red" href="/booking">
-                  Book your transfer <Icon name="arrow" />
-                </a>
-                <a className="button button-outline-light" href="#destinations">
-                  Explore destinations
-                </a>
-              </div>
-              <div className="hero-reassurance">
-                <span>
-                  <Icon name="check" />
-                  Private, door-to-door service
-                </span>
-                <span>
-                  <Icon name="check" />
-                  Price confirmed before travel
-                </span>
-              </div>
+      <SiteHeader />
+      <main id="main-content" className="transfer-home" tabIndex={-1}>
+        <section className="th-hero" aria-labelledby="hero-title">
+          <div className="th-container th-hero-grid">
+            <div className="th-hero-copy">
+              <p className="th-eyebrow"><span className="th-dot" /> TIRANA AIRPORT · PRIVATE TRANSFERS</p>
+              <h1 id="hero-title">You land.<br />We take it <span>from here.</span></h1>
+              <p className="th-hero-description">Your own driver. One fixed price. A comfortable ride from Tirana Airport to wherever Albania takes you.</p>
+              <a className="th-text-link" href="#plan-transfer">Find your transfer <Icon name="arrow" /></a>
+              <div className="th-hero-bottom"><Icon name="plane" /><span>Flight delayed?<br /><strong>We follow your arrival.</strong></span></div>
+            </div>
+            <div className="th-hero-visual">
+              <picture>
+                <img
+                  src="/images/tia-airport-828.webp"
+                  srcSet="/images/tia-airport-480.webp 480w, /images/tia-airport-640.webp 640w, /images/tia-airport-828.webp 828w, /images/tia-airport-1440.webp 1440w"
+                  sizes="(max-width: 760px) calc(100vw - 40px), 50vw"
+                  alt="Travellers arriving outside Tirana International Airport"
+                  width={1440} height={1800} fetchPriority="high" decoding="async"
+                />
+              </picture>
+              <div className="th-photo-tag"><Icon name="pin" /><span>Tirana International Airport<strong>Your journey starts here.</strong></span><span className="th-airport-code">TIA</span></div>
             </div>
           </div>
-        </section>
-        <section className="trust-premium" aria-label="Transfer benefits">
-          <div className="content-width trust-grid-premium">
-            {trust.map((t) => (
-              <div key={t.title} className="trust-item-premium">
-                <Icon name={t.icon} />
-                <div>
-                  <h2>{t.title}</h2>
-                  <p>{t.text}</p>
-                </div>
-              </div>
-            ))}
+          <div className="th-container">
+            <section id="plan-transfer" className="th-planner" aria-labelledby="planner-title">
+              <div className="th-planner-heading"><h2 id="planner-title">Where are you heading?</h2><span><Icon name="check" /> Private, door-to-door transfers</span></div>
+              <form action="/booking" method="get" className="th-route-form">
+                <div className="th-origin"><Icon name="plane" /><div><span>FROM</span><strong>Tirana Airport <span className="th-code">TIA</span></strong></div></div>
+                <label className="th-destination"><Icon name="pin" /><span><span className="th-field-label">TO</span><select name="destination" required defaultValue=""><option value="" disabled>Choose your destination</option>{routes.map((r) => <option key={r.slug} value={r.city}>{r.city}</option>)}</select></span></label>
+                <button className="th-button" type="submit">Continue to booking <Icon name="arrow" /></button>
+              </form>
+              <div className="th-planner-foot"><p>Add your date, passengers and vehicle in the next step.</p><a href="/booking">Different pickup or return journey? <span aria-hidden="true">↗</span></a></div>
+            </section>
+            <div className="th-quick-routes"><span>POPULAR ROUTES</span>{homepageRoutes.slice(0, 4).map((r) => <a key={r.slug} href={`/booking?destination=${encodeURIComponent(r.city)}`}>TIA <span aria-hidden="true">→</span> {r.city}</a>)}</div>
           </div>
         </section>
-        <section id="destinations" className="premium-section light-section">
-          <div className="content-width">
-            <SectionHeading
-              eyebrow="From arrivals to anywhere"
-              title="Popular Airport Transfer Destinations"
-              text="Discover reliable private transfers from Tirana International Airport to Albania’s most popular destinations."
-            />
-            <div className="destination-grid">
-              {homepageRoutes.map((r, i) => (
-                <article className="destination-card" key={r.slug}>
-                  {r.image ? (
-                    <div className="destination-photo">
-                      <Image
-                        src={r.image.src}
-                        alt={r.image.alt}
-                        fill
-                        style={{ objectPosition: r.image.position }}
-                        sizes="(max-width:520px) calc(100vw - 32px), (max-width:780px) calc((100vw - 54px) / 2), (max-width:900px) calc((100vw - 62px) / 2), (max-width:1220px) calc((100vw - 84px) / 3), 379px"
-                      />
-                    </div>
-                  ) : (
-                    <div className="destination-label">
-                      <Icon name="pin" />
-                      <span>Albania / {String(i + 1).padStart(2, "0")}</span>
-                    </div>
-                  )}
-                  <div className="destination-body">
-                    <h3>
-                      <a href={`/routes/${r.slug}`}>{r.city}</a>
-                    </h3>
-                    <p>{r.description}</p>
-                    <p className="journey-time">
-                      <Icon name="clock" />
-                      {r.durationLabel}
-                    </p>
-                    <a
-                      className="button button-outline"
-                      href={`/booking?destination=${encodeURIComponent(r.city)}`}
-                      aria-label={`Book Now for ${r.city}`}
-                    >
-                      Book Now <Icon name="arrow" />
-                    </a>
-                  </div>
-                </article>
-              ))}
-            </div>
-            <p className="section-note">
-              Travel times are approximate and depend on traffic, weather and
-              your final address. Your price is confirmed in the booking form.
-            </p>
-            <div className="mt-8 flex justify-center">
-              <a className="button button-outline" href="/routes">
-                Show more destinations <Icon name="arrow" />
-              </a>
-            </div>
-          </div>
-        </section>
-        <section className="premium-section">
-          <div className="content-width">
-            <SectionHeading
-              eyebrow="Travel with peace of mind"
-              title="Why Choose TiaTransfer?"
-            />
-            <div className="benefit-grid-premium">
-              {benefits.map((b) => (
-                <article key={b.title}>
-                  <div className="icon-tile">
-                    <Icon name={b.icon} />
-                  </div>
-                  <h3>{b.title}</h3>
-                  <p>{b.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section className="premium-section light-section">
-          <div className="content-width">
-            <SectionHeading
-              eyebrow="Simple from the start"
-              title="Book Your Airport Transfer in 3 Easy Steps"
-            />
-            <div className="steps-grid">
-              {steps.map((s, i) => (
-                <article key={s.title} className="step-card">
-                  <div className="step-top">
-                    <span className="step-number">0{i + 1}</span>
-                    <Icon name={s.icon} />
-                  </div>
-                  <h3>{s.title}</h3>
-                  <p>{s.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section id="airport-pickup" className="premium-section">
-          <div className="content-width pickup-grid">
-            <div className="pickup-photo">
-              <Image
-                src={airport}
-                alt="Exterior arrivals area at Tirana International Airport"
-                fill
-                sizes="(max-width:780px) 100vw, 50vw"
-              />
-            </div>
-            <div>
-              <SectionHeading
-                eyebrow="A warm welcome at arrivals"
-                title="Meeting Your Driver at Tirana Airport"
-              />
-              <p className="pickup-description">
-                After passing passport control and collecting your luggage,
-                proceed through the arrivals area and exit the terminal. The
-                designated meet-and-greet area is outside on the right-hand
-                side, behind the plexiglass barrier, where drivers wait with
-                passenger name signs.
-              </p>
-              <div className="pickup-detail">
-                <Icon name="welcome" />
-                <div>
-                  <h3>Look for your name sign</h3>
-                  <p>
-                    Follow the pickup instructions in your confirmation and keep
-                    your booking details handy.
-                  </p>
-                </div>
-              </div>
-              <div className="pickup-detail">
-                <Icon name="plane" />
-                <div>
-                  <h3>We follow your flight</h3>
-                  <p>
-                    Add your flight number when booking so your pickup can be
-                    adjusted to your arrival.
-                  </p>
-                </div>
-              </div>
-              <a href="/contact" className="button button-navy">
-                Contact assistance <Icon name="arrow" />
-              </a>
-            </div>
-          </div>
-        </section>
-        <section className="premium-section light-section">
-          <div className="content-width faq-layout">
-            <SectionHeading
-              eyebrow="Before you travel"
-              title="Frequently Asked Questions"
-              text="Clear answers to help you plan your airport pickup."
-            />
-            <div className="faq-premium">
-              {homepageFaq.map((f) => (
-                <details key={f.question}>
-                  <summary>{f.question}</summary>
-                  <p>{f.answer}</p>
-                </details>
-              ))}
-              <a className="button button-outline mt-6" href="/faq">
-                Show more FAQs <Icon name="arrow" />
-              </a>
-            </div>
-          </div>
-        </section>
-        <section className="premium-section">
-          <div className="content-width">
-            <SectionHeading
-              eyebrow="Make the most of your journey"
-              title="Explore Albania With Our Travel Guides"
-            />
-            <div className="guide-grid">
-              {posts.map((p) => (
-                <article key={p.slug} className="guide-card">
-                  <div className="guide-photo">
-                    <Image
-                      src={airport}
-                      alt="Tirana International Airport, the starting point for your journey"
-                      fill
-                      sizes="(max-width:780px) 100vw, 33vw"
-                    />
-                  </div>
-                  <div className="guide-body">
-                    <time dateTime={p.publishedAt}>
-                      {new Date(p.publishedAt).toLocaleDateString("en-GB", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                        timeZone: "UTC",
-                      })}
-                    </time>
-                    <h3>
-                      <a href={`/blog/${p.slug}`}>{p.title}</a>
-                    </h3>
-                    <p>{p.description}</p>
-                    <a href={`/blog/${p.slug}`} className="text-link">
-                      Read More <span className="sr-only">about {p.title}</span>{" "}
-                      →
-                    </a>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section className="final-cta">
-          <Image
-            src={airport}
-            alt=""
-            fill
-            sizes="100vw"
-            className="final-cta-photo"
-          />
-          <div className="final-cta-overlay" />
-          <div className="content-width final-cta-content">
-            <p className="eyebrow-premium">Your arrival, taken care of</p>
-            <h2>Your Journey Starts With TiaTransfer</h2>
-            <p>
-              Book your private airport transfer today and enjoy comfortable,
-              reliable transportation throughout Albania.
-            </p>
-            <a className="button button-red" href="/booking">
-              Book your transfer <Icon name="arrow" />
-            </a>
-          </div>
-        </section>
+
+        <section className="th-assurances" aria-label="Your transfer, taken care of"><div className="th-container th-assurance-grid">{assurances.map((item) => <div key={item.title}><Icon name={item.icon} /><div><h2>{item.title}</h2><p>{item.text}</p></div></div>)}</div></section>
+
+        <section className="th-section th-services" aria-labelledby="services-title"><div className="th-container">
+          <div className="th-section-head"><div><p className="th-eyebrow">THE WAY YOU TRAVEL</p><h2 id="services-title">One arrival.<br />So many possibilities.</h2></div><p>Solo trip, family holiday or a journey together. Start with a transfer that fits your plans.</p></div>
+          <div className="th-service-list">{services.map((service) => <a key={service.number} href={service.href} className="th-service-row"><span className="th-service-number">{service.number}</span><h3>{service.title}</h3><p>{service.text}</p><span className="th-service-label">{service.label}<Icon name="arrow" /></span></a>)}</div>
+        </div></section>
+
+        <section id="destinations" className="th-section th-destinations" aria-labelledby="destinations-title"><div className="th-container">
+          <div className="th-section-head"><div><p className="th-eyebrow">FROM ARRIVALS TO ANYWHERE</p><h2 id="destinations-title">Where will Albania take you?</h2></div><a className="th-text-link" href="/routes">All destinations <Icon name="arrow" /></a></div>
+          <div className="th-destination-grid">{homepageRoutes.map((r) => <article className="th-destination-card" key={r.slug}>
+            <a href={`/routes/${r.slug}`} className="th-destination-photo">{r.image && <Image src={r.image.src} alt={r.image.alt} fill sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) 45vw, 380px" style={{ objectPosition: r.image.position }} />}<span>TIA <span aria-hidden="true">↗</span> {r.city}</span></a>
+            <div className="th-destination-body"><div><h3><a href={`/routes/${r.slug}`}>{r.city}</a></h3><p><Icon name="clock" />{r.durationLabel}</p></div><a className="th-circle-link" href={`/booking?destination=${encodeURIComponent(r.city)}`} aria-label={`Book a transfer to ${r.city}`}><Icon name="arrow" /></a></div>
+          </article>)}</div>
+          <p className="th-small-note">Travel times are estimates. Your final fare is confirmed during booking.</p>
+        </div></section>
+
+        <section className="th-section th-journey" aria-labelledby="journey-title"><div className="th-container th-journey-grid">
+          <div><p className="th-eyebrow">LESS PLANNING. MORE TRAVELLING.</p><h2 id="journey-title">From booking<br />to a warm welcome.</h2><a className="th-button" href="/booking">Book your transfer <Icon name="arrow" /></a></div>
+          <ol className="th-steps"><li><span>01</span><div><h3>Tell us your plans</h3><p>Choose your pickup, destination, travel date and passenger details.</p></div></li><li><span>02</span><div><h3>Make it your ride</h3><p>Select your vehicle and review the final fare and booking conditions.</p></div></li><li><span>03</span><div><h3>Meet your driver</h3><p>Follow your confirmation instructions and look for your name sign at arrivals.</p></div></li></ol>
+        </div></section>
+
+        <section className="th-section" aria-labelledby="fleet-title"><div className="th-container">
+          <div className="th-section-head"><div><p className="th-eyebrow">SPACE FOR YOUR JOURNEY</p><h2 id="fleet-title">Your people. Your ride.</h2></div><a className="th-text-link" href="/fleet">Explore our fleet <Icon name="arrow" /></a></div>
+          <div className="th-fleet-grid">{fleet.map((vehicle, index) => <article className="th-fleet-card" key={vehicle.slug}><div className="th-fleet-top"><span>0{index + 1}</span><Icon name="car" /></div><div className="th-fleet-photo"><Image src={vehicle.image} alt={`Illustrative ${vehicle.name.toLowerCase()} transfer vehicle`} fill sizes="(max-width: 600px) 90vw, (max-width: 1000px) 45vw, 280px" /></div><h3>{vehicle.name}</h3><p>{vehicle.note}</p><a className="th-text-link" href="/booking">Choose your transfer <Icon name="arrow" /></a></article>)}</div>
+          <p className="th-small-note">Vehicle images illustrate the categories. Your vehicle and capacity are confirmed during booking.</p>
+        </div></section>
+
+        <section id="airport-pickup" className="th-section th-pickup" aria-labelledby="pickup-title"><div className="th-container th-pickup-grid">
+          <div className="th-pickup-photo"><Image src={airport} alt="Arrivals area outside Tirana International Airport" fill sizes="(max-width: 760px) 90vw, 45vw" /></div>
+          <div className="th-pickup-copy"><p className="th-eyebrow">A FAMILIAR FACE AT ARRIVALS</p><h2 id="pickup-title">New country.<br />Easy first steps.</h2><p>Collect your luggage and exit the terminal. The meet-and-greet area is outside on the right, behind the plexiglass barrier.</p><div className="th-pickup-note"><Icon name="welcome" /><div><h3>Look for your name sign</h3><p>Your booking confirmation includes your pickup instructions. Keep it handy when you arrive.</p></div></div><a className="th-text-link" href="/contact">Need a hand? Contact us <Icon name="arrow" /></a></div>
+        </div></section>
+
+        <section className="th-section" aria-labelledby="faq-title"><div className="th-container th-faq-grid">
+          <div><p className="th-eyebrow">BEFORE YOU TAKE OFF</p><h2 id="faq-title">A few things<br />you might ask.</h2><a className="th-text-link" href="/faq">All your questions <Icon name="arrow" /></a></div>
+          <div className="th-faq-list">{homepageFaq.map((f) => <details key={f.question}><summary>{f.question}</summary><p>{f.answer}</p></details>)}</div>
+        </div></section>
+
+        <section className="th-outro"><div className="th-container"><p className="th-eyebrow">FROM TIRANA AIRPORT. ACROSS ALBANIA.</p><h2>The flight is booked.<br /><span>Let’s take care of the rest.</span></h2><a href="/booking" className="th-button">Find your transfer <Icon name="arrow" /></a><a className="th-outro-contact" href="/contact">Talk to our team <Icon name="arrow" /></a></div></section>
       </main>
       <SiteFooter />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
-        }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
     </>
   );
 }
