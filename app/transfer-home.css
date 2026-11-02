@@ -245,3 +245,34 @@
 
 .th-destination-card { min-width: 0; }
 .site-header--transfer .header-book { display: flex; }
+
+/* Reserve the full header height so changing its size never moves page content. */
+.site-header-space { height: 115px; }
+.site-header--transfer {
+  position: fixed;
+  inset: 0 0 auto;
+  transform: translateY(0);
+  transition: transform 220ms ease;
+  box-shadow: 0 2px 12px #20252208;
+}
+.site-header--transfer.site-header--hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+.site-header--transfer.site-header--compact .th-support { display: none; }
+.site-header--transfer.site-header--compact .nav-wrap { height: 64px; }
+.site-header--transfer.site-header--compact .header-logo { height: 34px; }
+.site-header--transfer.site-header--compact .desktop-nav a { padding-block: 19px; }
+.site-header--transfer.site-header--compact .desktop-nav a[aria-current="page"]::after { bottom: 9px; }
+.site-header--transfer .header-logo,
+.site-header--transfer .nav-wrap { transition: height 180ms ease; }
+@media (max-width: 760px) {
+  .site-header-space { height: 98px; }
+  .site-header--transfer.site-header--compact .nav-wrap { height: 60px; }
+  .site-header--transfer.site-header--compact .header-logo { height: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header--transfer,
+  .site-header--transfer .header-logo,
+  .site-header--transfer .nav-wrap { transition: none; }
+}
